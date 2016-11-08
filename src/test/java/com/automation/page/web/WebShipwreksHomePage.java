@@ -3,13 +3,14 @@ package com.automation.page.web;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import org.testng.Reporter;
 
 import com.automation.api.page.ShipwreksHomePage;
 import com.automation.common.WebDriverTest;
 import com.automation.repository.WebLocators.ShipwreksHomePageLocators;
 
-public class WebShipwreksHomePage extends WebDriverTest implements
-		ShipwreksHomePageLocators, ShipwreksHomePage {
+public class WebShipwreksHomePage extends WebDriverTest implements ShipwreksHomePageLocators, ShipwreksHomePage {
 
 	@FindBy(css = TITLE_LABEL_LOC)
 	WebElement titleLabel;
@@ -37,6 +38,10 @@ public class WebShipwreksHomePage extends WebDriverTest implements
 
 	@Override
 	public void verifyHomePageDetails() {
-
+		if (getTitleLabel().isDisplayed()) {
+			Reporter.log("'Ship wrek' label successfully displayed");
+		} else {
+			Assert.assertTrue(getTitleLabel().isDisplayed(), "Not able to verify 'Ship wrek' label");
+		}
 	}
 }

@@ -1,13 +1,10 @@
 package com.automation.page.mobile;
 
-import javax.swing.JOptionPane;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.Reporter;
 
 import com.automation.api.page.ShipwreksHomePage;
 import com.automation.common.WebDriverTest;
@@ -74,10 +71,20 @@ public class MobileShipwreksHomePage extends WebDriverTest implements ShipwreksH
 	}
 	
 	public void verifyHomePageDetails(){
-		waitForPresent(getHumbergerMenu());
-		Assert.assertTrue(getHumbergerMenu().isDisplayed(), "humberger menu");
-		//Assert.assertTrue(getBtnClickHere().isDisplayed(), "click here button");
-		Assert.assertTrue(getDriveLocations().isDisplayed(), "Drive locations label");
-		Assert.assertTrue(getShipWrekLabel().isDisplayed(), "Ship wrek label");
+		if (getHumbergerMenu().isDisplayed()) {
+			Reporter.log("'Humberger' menu successfully displayed");
+		} else {
+			Assert.assertTrue(getHumbergerMenu().isDisplayed(), "Not able to verify 'Humberger' menu");
+		}
+		if (getDriveLocations().isDisplayed()) {
+			Reporter.log("'Drive locations' label successfully displayed");
+		} else {
+			Assert.assertTrue(getDriveLocations().isDisplayed(), "Not able to verify 'Drive locations' label");
+		}
+		if (getShipWrekLabel().isDisplayed()) {
+			Reporter.log("'Ship wrek' label successfully displayed");
+		} else {
+			Assert.assertTrue(getShipWrekLabel().isDisplayed(), "Not able to verify 'Ship wrek' label");
+		}
 	}
 }

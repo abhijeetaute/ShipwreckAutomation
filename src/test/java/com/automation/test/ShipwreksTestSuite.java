@@ -14,8 +14,6 @@ public class ShipwreksTestSuite extends WebDriverTest {
 
 		ShipwreksHomePage shipwreksHomePage = getPageFactory().getShipwreksHomePage();
 		shipwreksHomePage.launchPage();
-		
-		shipwreksHomePage.waitForPageToLoad();
 		shipwreksHomePage.verifyHomePageDetails();
 	}
 	
@@ -45,5 +43,4 @@ public class ShipwreksTestSuite extends WebDriverTest {
 			Assert.assertTrue(shipwreksHomePage.getImage().isDisplayed(), "Not able to verify 'Image'");
 		}
 	}
-
 }
