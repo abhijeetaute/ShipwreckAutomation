@@ -8,7 +8,8 @@ import com.automation.api.page.ShipwreksHomePage;
 import com.automation.common.WebDriverTest;
 import com.automation.repository.WebLocators.ShipwreksHomePageLocators;
 
-public class WebShipwreksHomePage extends WebDriverTest implements ShipwreksHomePageLocators, ShipwreksHomePage {
+public class WebShipwreksHomePage extends WebDriverTest implements
+		ShipwreksHomePageLocators, ShipwreksHomePage {
 
 	@FindBy(css = TITLE_LABEL_LOC)
 	WebElement titleLabel;
@@ -29,7 +30,13 @@ public class WebShipwreksHomePage extends WebDriverTest implements ShipwreksHome
 	public WebElement getTitleLabel() {
 		return titleLabel;
 	}
+
 	public WebElement getImage() {
 		return image;
+	}
+
+	@Override
+	public void verifyHomePageDetails() {
+
 	}
 }

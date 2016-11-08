@@ -1,10 +1,14 @@
 package com.automation.common;
 
+import io.appium.java_client.android.AndroidDriver;
+
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -57,15 +61,37 @@ public class WebDriverTest {
 			if (props.getProperty("platform.name").contains("web")) {
 				if (props.getProperty("browser").contains("firefoxDriver")) {
 					driver = new FirefoxDriver();
-				} else if (props.getProperty("browser").contains("chromeDriver")) {
+				} else if (props.getProperty("browser")
+						.contains("chromeDriver")) {
 					System.setProperty("webdriver.chrome.driver",
-							System.getProperty("user.dir") + "/server/chromedriver.exe");
+							System.getProperty("user.dir")
+									+ "/server/chromedriver.exe");
 					DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 					driver = new ChromeDriver(desiredCapabilities);
 				}
 				driver.manage().window().maximize();
 			} else {
 
+				DesiredCapabilities capabilities = new DesiredCapabilities();
+//				capabilities.setCapability("appPackage",
+//						"com.ionicframework.shipwreckmobileapp944984");
+//				capabilities
+//						.setCapability("appActivity",
+//								"com.ionicframework.shipwreckmobileapp944984.MainActivity");
+//				capabilities
+//						.setCapability("waitForActivity",
+//								"com.ionicframework.shipwreckmobileapp944984.MainActivity");
+//				capabilities.setCapability("deviceName", "320817e16bbe6189");
+//				capabilities.setCapability("platformName", "Android");
+//				capabilities.setCapability("automationName", "Appium");
+
+				try {
+					driver = new AndroidDriver(new URL(
+							"http://127.0.0.1:4725/wd/hub"), capabilities);
+				} catch (MalformedURLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			driverWait = new WebDriverWait(driver, 50);
 		}
@@ -73,18 +99,21 @@ public class WebDriverTest {
 
 	protected PageFactory getPageFactory() {
 		if (null == pageFactory) {
-			pageFactory = "web".equalsIgnoreCase(props.getProperty("platform.name")) ? new WebPageFactory()
+			pageFactory = "web".equalsIgnoreCase(props
+					.getProperty("platform.name")) ? new WebPageFactory()
 					: new MobilePageFactory();
 		}
 		return pageFactory;
 	}
 
 	public static void waitForPresent(WebElement element) {
-		driverWait.until(ExpectedConditions.presenceOfElementLocated(findLocator(element)));
+		driverWait.until(ExpectedConditions
+				.presenceOfElementLocated(findLocator(element)));
 	}
 
 	public static void waitForVisible(WebElement element) {
-		driverWait.until(ExpectedConditions.visibilityOfElementLocated(findLocator(element)));
+		driverWait.until(ExpectedConditions
+				.visibilityOfElementLocated(findLocator(element)));
 	}
 
 	public static Properties readResources() {
@@ -105,8 +134,10 @@ public class WebDriverTest {
 			getResources("config");
 			for (String file : resourcesFiles) {
 				File xmlFile = new File(file);
-				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory
+						.newInstance();
+				DocumentBuilder documentBuilder = documentBuilderFactory
+						.newDocumentBuilder();
 				Document document = documentBuilder.parse(xmlFile);
 				document.getDocumentElement().normalize();
 				NodeList nodeList = document.getElementsByTagName("parameter");
@@ -115,7 +146,8 @@ public class WebDriverTest {
 					Node node = nodeList.item(temp);
 					if (node.getNodeType() == Node.ELEMENT_NODE) {
 						Element eElement = (Element) node;
-						fileWriter.write(eElement.getAttribute("name") + "=" + eElement.getAttribute("value"));
+						fileWriter.write(eElement.getAttribute("name") + "="
+								+ eElement.getAttribute("value"));
 						fileWriter.append("\n");
 					}
 				}

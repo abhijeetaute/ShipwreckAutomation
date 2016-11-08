@@ -1,8 +1,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Shipwreks Automation" verbose="1" thread-count="2" parallel="tests">
+<suite name="Shipwreks Automation" verbose="1" thread-count="1">
 
   	<parameter name="browser" value="firefoxDriver"></parameter>
-  	<parameter name="platform.name" value="web"></parameter>
+  	<parameter name="platform.name" value="mobile"></parameter>
   	
 	<test name="Shipwreks Automation" enabled="true">
 		<classes>

@@ -11,4 +11,6 @@ public interface ShipwreksHomePage {
 	public WebElement getTitleLabel();
 
 	public WebElement getImage();
+	
+	public void verifyHomePageDetails();
 }

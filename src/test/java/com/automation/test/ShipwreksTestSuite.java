@@ -9,14 +9,18 @@ import com.automation.common.WebDriverTest;
 
 public class ShipwreksTestSuite extends WebDriverTest {
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void TEST_01() {
 
 		ShipwreksHomePage shipwreksHomePage = getPageFactory().getShipwreksHomePage();
 		shipwreksHomePage.launchPage();
+		
+		shipwreksHomePage.waitForPageToLoad();
+		shipwreksHomePage.verifyHomePageDetails();
 	}
-
-	@Test
+	
+	
+	@Test(enabled = true)
 	public void TEST_02() {
 
 		ShipwreksHomePage shipwreksHomePage = getPageFactory().getShipwreksHomePage();
@@ -41,4 +45,5 @@ public class ShipwreksTestSuite extends WebDriverTest {
 			Assert.assertTrue(shipwreksHomePage.getImage().isDisplayed(), "Not able to verify 'Image'");
 		}
 	}
+
 }
