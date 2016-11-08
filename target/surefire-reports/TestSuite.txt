@@ -1,0 +1,17 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 25.419 sec <<< FAILURE!
+TC_DEMO_01(com.automation.test.ShipwreksTestSuite)  Time elapsed: 8.105 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:345)
+	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:903)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:41)
+	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:181)
+	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:178)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:238)
+	at com.automation.common.WebDriverTest.waitForPresent(WebDriverTest.java:83)
+	at com.automation.page.mobile.MobileShipwreksHomePage.waitForPageToLoad(MobileShipwreksHomePage.java:23)
+	at com.automation.page.mobile.MobileShipwreksHomePage.launchPage(MobileShipwreksHomePage.java:18)
+	at com.automation.test.ShipwreksTestSuite.TC_DEMO_01(ShipwreksTestSuite.java:14)
+

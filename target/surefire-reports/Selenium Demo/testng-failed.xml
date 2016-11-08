@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Selenium Demo]" parallel="tests">
+  <parameter name="platform.name" value="mobile"/>
+  <parameter name="browser" value="firefoxDriver"/>
+  <test name="Shipwreks Automation(failed)" parallel="tests">
+    <classes>
+      <class name="com.automation.test.ShipwreksTestSuite">
+        <methods>
+          <include name="shutDown"/>
+          <include name="TC_DEMO_01"/>
+        </methods>
+      </class> <!-- com.automation.test.ShipwreksTestSuite -->
+    </classes>
+  </test> <!-- Shipwreks Automation(failed) -->
+</suite> <!-- Failed suite [Selenium Demo] -->
