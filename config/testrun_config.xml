@@ -2,7 +2,7 @@
 <suite name="Shipwreks Automation" verbose="1" thread-count="1">
 
   	<parameter name="browser" value="firefoxDriver"></parameter>
-  	<parameter name="platform.name" value="mobile"></parameter>
+  	<parameter name="platform.name" value="web"></parameter>
   	
 	<test name="Shipwreks Automation" enabled="true">
 		<classes>
