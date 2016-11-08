@@ -10,8 +10,10 @@ import com.automation.repository.MobileLocators.ShipwreksHomePageLocators;
 
 public class MobileShipwreksHomePage extends WebDriverTest implements ShipwreksHomePageLocators, ShipwreksHomePage {
 
-	@FindBy(name = TITLE_LABEL)
+	@FindBy(name = TITLE_LABEL_LOC)
 	WebElement titleLabel;
+	@FindBy(css = IMAGE_LOC)
+	WebElement image;
 
 	public void launchPage() {
 		driver.get("http://10.20.32.251:9999/index.html");
@@ -26,5 +28,8 @@ public class MobileShipwreksHomePage extends WebDriverTest implements ShipwreksH
 
 	public WebElement getTitleLabel() {
 		return titleLabel;
+	}
+	public WebElement getImage() {
+		return image;
 	}
 }

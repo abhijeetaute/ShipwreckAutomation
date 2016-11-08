@@ -9,4 +9,6 @@ public interface ShipwreksHomePage {
 	public void waitForPageToLoad();
 
 	public WebElement getTitleLabel();
+
+	public WebElement getImage();
 }
