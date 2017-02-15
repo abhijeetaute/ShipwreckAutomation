@@ -18,7 +18,7 @@ public class WebShipwreksHomePage extends WebDriverTest implements ShipwreksHome
 	WebElement image;
 
 	public void launchPage() {
-		driver.get("http://10.11.31.62:9090/shipwreck-app-1.0-SNAPSHOT/index.html");
+		driver.get("http://localhost:9090/shipwreck-app-1.0-SNAPSHOT/index.html");
 		waitForPageToLoad();
 	}
 
